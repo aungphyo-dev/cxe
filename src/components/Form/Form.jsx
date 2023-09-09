@@ -23,7 +23,10 @@ const Form = () => {
     const [exchange, {data: exchangeResult, isLoading}] = useGetExchangeMutation()
     console.log(currency1,currency2)
     useEffect(() => {
-        exchange({currency1, currency2, amount})
+        setTimeout(()=>{
+            exchange({currency1, currency2, amount})
+        },3000)
+        return clearTimeout(()=>{})
     }, [currency1, currency2, amount]);
     const handleClick = () => {
         setCurrency1(currency2)
