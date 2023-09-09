@@ -4,7 +4,6 @@ export const authApi = createApi({
     tagTypes: ["CurrencyExchange"],
     baseQuery: fetchBaseQuery({
         baseUrl: "https://v6.exchangerate-api.com/v6/3da7f76a514bf7bb31c01553/",
-//https://v6.exchangerate-api.com/v6/3da7f76a514bf7bb31c01553/pair/EUR/GBP/5
     }),
     endpoints: build => ({
         getExchange:build.mutation({

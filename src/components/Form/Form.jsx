@@ -8,6 +8,7 @@ import SyncAltIcon from '@mui/icons-material/SyncAlt';
 import Result from "../Result/Result.jsx";
 
 const Form = () => {
+    //For MUI design
     const ITEM_HEIGHT = 48;
     const ITEM_PADDING_TOP = 8;
     const MenuProps = {
@@ -17,17 +18,20 @@ const Form = () => {
             },
         },
     };
+    //Dynamic variable
     const [currency1, setCurrency1] = useState("USD")
     const [currency2, setCurrency2] = useState("MMK")
     const [amount, setAmount] = useState("5")
+    //Query from authAPI
     const [exchange, {data: exchangeResult, isLoading}] = useGetExchangeMutation()
-    console.log(currency1,currency2)
+    //UseEffect with debounce
     useEffect(() => {
         setTimeout(()=>{
             exchange({currency1, currency2, amount})
         },3000)
         return clearTimeout(()=>{})
     }, [currency1, currency2, amount]);
+    //To change variable
     const handleClick = () => {
         setCurrency1(currency2)
         setCurrency2(currency1)
