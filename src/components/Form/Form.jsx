@@ -17,10 +17,11 @@ const Form = () => {
             },
         },
     };
-    const [currency1, setCurrency1] = useState(["USD"])
-    const [currency2, setCurrency2] = useState(["MMK"])
+    const [currency1, setCurrency1] = useState("USD")
+    const [currency2, setCurrency2] = useState("MMK")
     const [amount, setAmount] = useState("5")
     const [exchange, {data: exchangeResult, isLoading}] = useGetExchangeMutation()
+    console.log(currency1,currency2)
     useEffect(() => {
         exchange({currency1, currency2, amount})
     }, [currency1, currency2, amount]);
@@ -34,11 +35,10 @@ const Form = () => {
                     {/*From Select*/}
                     <div className='mb-3'>
                         <FormControl fullWidth>
-                            <InputLabel id="demo-multiple-name-label">From</InputLabel>
+                            <InputLabel id="demo-simple-name-label">From</InputLabel>
                             <Select
-                                labelId="demo-multiple-name-label"
-                                id="demo-multiple-name"
-                                multiple
+                                labelId="demo-simple-name-label"
+                                id="demo-simple-name"
                                 value={currency1}
                                 onChange={e => setCurrency1(e.target.value)}
                                 input={<OutlinedInput label="Name"/>}
@@ -66,11 +66,10 @@ const Form = () => {
                     {/*To Select*/}
                     <div className='mt-3'>
                         <FormControl fullWidth>
-                            <InputLabel id="demo-multiple-name-label">To</InputLabel>
+                            <InputLabel id="demo-simple-name">To</InputLabel>
                             <Select
-                                labelId="demo-multiple-name-label"
-                                id="demo-multiple-name"
-                                multiple
+                                labelId="demo-simple-name"
+                                id="demo-simple-name"
                                 value={currency2}
                                 onChange={e => setCurrency2(e.target.value)}
                                 input={<OutlinedInput label="Name"/>}
@@ -100,7 +99,7 @@ const Form = () => {
                             <Skeleton/>
                             <Skeleton animation="wave"/>
                             <Skeleton animation={false}/>
-                        </Box> : <Result data={exchangeResult}/>}
+                        </Box> : <Result data={exchangeResult} amount={amount}/>}
                     </div>
                     {/*Result*/}
                 </div>
