@@ -24,15 +24,9 @@ const Form = () => {
     const [amount, setAmount] = useState("5")
     //Query from authAPI
     const [exchange, {data: exchangeResult, isLoading}] = useGetExchangeMutation()
-    //UseEffect with debounce
+
     useEffect(() => {
-        exchange({currency1, currency2, amount})
-    }, []);
-    useEffect(() => {
-        setTimeout(()=>{
             exchange({currency1, currency2, amount})
-        },3000)
-        return clearTimeout(()=>{})
     }, [currency1, currency2, amount]);
     //To change variable
     const handleClick = () => {
