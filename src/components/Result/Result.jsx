@@ -1,4 +1,4 @@
-import {object} from "prop-types";
+import {object, string} from "prop-types";
 
 const Result = ({data,amount}) => {
     console.log(data)
@@ -20,6 +20,7 @@ const Result = ({data,amount}) => {
   )
 }
 Result.propTypes = {
-    data : object
+    data : object,
+    amount:string
 }
 export default Result
