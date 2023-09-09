@@ -26,6 +26,9 @@ const Form = () => {
     const [exchange, {data: exchangeResult, isLoading}] = useGetExchangeMutation()
     //UseEffect with debounce
     useEffect(() => {
+        exchange({currency1, currency2, amount})
+    }, []);
+    useEffect(() => {
         setTimeout(()=>{
             exchange({currency1, currency2, amount})
         },3000)
